@@ -2,25 +2,50 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portal - About</title>
+
 <style>
-body{font-family:Arial;margin:0;background:#f4f7fb;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+
+body{background:#f5f7fb;}
+
 nav{
     background:#2563eb;
-    padding:15px;
+    padding:15px 8%;
     display:flex;
     justify-content:space-between;
+    align-items:center;
     color:white;
 }
+
 nav a{
     color:white;
     text-decoration:none;
     margin:0 10px;
-    font-weight:bold;
+    font-weight:600;
 }
-.container{
-    padding:60px;
+
+.hero{
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    color:white;
     text-align:center;
+    padding:80px 20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:60px 20px;
+    text-align:center;
+}
+
+.box{
+    background:white;
+    padding:30px;
+    margin-top:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 </style>
 </head>
@@ -28,7 +53,7 @@ nav a{
 <body>
 
 <nav>
-    <div><b>My Website</b></div>
+    <h2>🎓 Student Portal</h2>
     <div>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -36,11 +61,28 @@ nav a{
     </div>
 </nav>
 
-<div class="container">
+<div class="hero">
     <h1>About Us</h1>
-    <p>
-        We are a creative team building modern websites and applications.
-    </p>
+    <p>Modern digital platform for students</p>
+</div>
+
+<div class="container">
+
+    <div class="box">
+        <h2>Who We Are</h2>
+        <p>
+            We are building a smart student portal to simplify academic management,
+            communication and learning experience.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>Our Mission</h2>
+        <p>
+            To connect students and faculty through a fast, simple and digital platform.
+        </p>
+    </div>
+
 </div>
 
 </body>

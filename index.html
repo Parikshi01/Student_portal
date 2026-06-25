@@ -1,0 +1,631 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --primary:#2563eb;
+    --secondary:#06b6d4;
+    --dark:#0f172a;
+    --light:#f8fafc;
+}
+
+body{
+    background:#f5f7fb;
+    color:#333;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(37,99,235,.95);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 8%;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:24px;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#fde047;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(255,255,255,.1);
+    border-radius:50%;
+    top:-120px;
+    left:-120px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    bottom:-100px;
+    right:-100px;
+}
+
+.hero-container{
+    width:1200px;
+    max-width:95%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+    color:white;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.badge{
+    background:rgba(255,255,255,.15);
+    padding:10px 18px;
+    border-radius:30px;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.hero-text h1{
+    font-size:4rem;
+    line-height:1.2;
+}
+
+.hero-text h1 span{
+    color:#fde047;
+}
+
+.hero-text p{
+    margin:20px 0;
+    line-height:1.8;
+    font-size:1.1rem;
+}
+
+.hero-buttons{
+    margin-top:30px;
+}
+
+.btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:600;
+    margin-right:10px;
+}
+
+.btn-primary{
+    background:white;
+    color:var(--primary);
+}
+
+.btn-outline{
+    background:transparent;
+    color:white;
+    border:2px solid white;
+}
+
+.hero-stats{
+    display:flex;
+    gap:40px;
+    margin-top:40px;
+}
+
+.hero-stats h3{
+    font-size:2rem;
+}
+
+.hero-image{
+    flex:1;
+    position:relative;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.float-card{
+    position:absolute;
+    background:white;
+    color:#333;
+    padding:15px 20px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    font-weight:600;
+}
+
+.card1{top:20px;left:-20px;}
+.card2{bottom:120px;right:-20px;}
+.card3{bottom:20px;left:30px;}
+
+/* SECTION */
+section{
+    padding:90px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+    color:var(--primary);
+    font-size:2.5rem;
+}
+
+/* FEATURES */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.feature-card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+}
+
+.feature-card .icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+/* ABOUT */
+.about{
+    background:white;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.about-card{
+    background:#f8fafc;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+/* TEAM */
+.team{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.member{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.member:hover{
+    transform:translateY(-10px);
+}
+
+.member img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.member-info{
+    padding:20px;
+}
+
+/* NOTICE */
+.notice-board{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.notice{
+    background:white;
+    padding:25px;
+    border-left:5px solid var(--primary);
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+/* CONTACT */
+.contact{
+    background:linear-gradient(135deg,#eff6ff,#dbeafe);
+}
+
+.contact-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.contact-info,
+.contact-form{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.info-box{
+    background:#eff6ff;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.contact-form button{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:var(--primary);
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+.hero-container,
+.about-grid,
+.contact-wrapper{
+    grid-template-columns:1fr;
+    flex-direction:column;
+}
+
+.hero-text h1{
+    font-size:2.8rem;
+}
+
+.hero-stats{
+    flex-wrap:wrap;
+}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🎓 Student Portal</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#notices">Notices</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+<div class="hero-container">
+
+<div class="hero-text">
+
+<div class="badge">
+🚀 Modern Learning Platform
+</div>
+
+<h1>
+Welcome Students,
+<br>
+Learn &
+<span>Grow Together</span>
+</h1>
+
+<p>
+Access courses, assignments, attendance,
+results and important notices from one
+powerful digital portal designed for students.
+</p>
+
+<div class="hero-buttons">
+<button class="btn btn-primary">Get Started</button>
+<button class="btn btn-outline">Explore</button>
+</div>
+
+<div class="hero-stats">
+<div>
+<h3>5000+</h3>
+<p>Students</p>
+</div>
+
+<div>
+<h3>120+</h3>
+<p>Courses</p>
+</div>
+
+<div>
+<h3>75+</h3>
+<p>Faculty</p>
+</div>
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200" alt="students">
+
+<div class="float-card card1">📚 120 Courses</div>
+<div class="float-card card2">📝 Assignments</div>
+<div class="float-card card3">📢 Latest Notices</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+<section>
+
+<h2 class="section-title">Portal Features</h2>
+
+<div class="features">
+
+<div class="feature-card">
+<div class="icon">📚</div>
+<h3>Courses</h3>
+<p>Access learning materials anytime.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">📝</div>
+<h3>Assignments</h3>
+<p>Track and submit assignments online.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">📊</div>
+<h3>Results</h3>
+<p>View academic performance instantly.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">📢</div>
+<h3>Notices</h3>
+<p>Stay updated with latest announcements.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+<h2 class="section-title">About Us</h2>
+
+<div class="about-grid">
+
+<div class="about-card">
+<h3>🎯 Our Mission</h3>
+<br>
+<p>
+To provide a smart and efficient digital platform
+that empowers students to manage their academic
+activities with ease and transparency.
+</p>
+</div>
+
+<div class="about-card">
+<h3>🌟 Our Vision</h3>
+<br>
+<p>
+To create a connected educational ecosystem where
+students, faculty and administration collaborate
+through modern technology.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- TEAM -->
+<section>
+
+<h2 class="section-title">Meet Our Team</h2>
+
+<div class="team">
+
+<div class="member">
+<img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800">
+<div class="member-info">
+<h3>John Doe</h3>
+<p>Portal Director</p>
+</div>
+</div>
+
+<div class="member">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800">
+<div class="member-info">
+<h3>Sarah Smith</h3>
+<p>Academic Coordinator</p>
+</div>
+</div>
+
+<div class="member">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800">
+<div class="member-info">
+<h3>Michael Lee</h3>
+<p>System Administrator</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- NOTICE BOARD -->
+<section id="notices">
+
+<h2 class="section-title">Latest Notices</h2>
+
+<div class="notice-board">
+
+<div class="notice">
+<h3>Semester Exams</h3>
+<p>Semester examinations will begin from July 15.</p>
+</div>
+
+<div class="notice">
+<h3>Assignment Submission</h3>
+<p>Submit all pending assignments before June 30.</p>
+</div>
+
+<div class="notice">
+<h3>Workshop Registration</h3>
+<p>Registration open for AI & Machine Learning Workshop.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+<h2 class="section-title">Contact Us</h2>
+
+<div class="contact-wrapper">
+
+<div class="contact-info">
+<h3>Get In Touch</h3>
+
+<div class="info-box">
+📧 support@studentportal.com
+</div>
+
+<div class="info-box">
+📞 +91 98765 43210
+</div>
+
+<div class="info-box">
+📍 Pune, Maharashtra, India
+</div>
+
+<div class="info-box">
+🕒 Mon - Fri : 9:00 AM - 5:00 PM
+</div>
+
+</div>
+
+<div class="contact-form">
+
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="6" placeholder="Your Message"></textarea>
+
+<button onclick="sendMessage()">
+Send Message
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Student Portal | Designed for Modern Education
+</footer>
+
+<script>
+function sendMessage(){
+alert("Message Sent Successfully!");
+}
+</script>
+
+</body>
+</html>
+```
